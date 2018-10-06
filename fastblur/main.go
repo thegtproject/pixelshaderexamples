@@ -57,7 +57,7 @@ func run() {
 	var uMouseVar mgl32.Vec4
 
 	// We will update these uniforms often, so use pointer
-	EasyBindUniforms(win.GetCanvas(),
+	EasyBindUniforms(win.Canvas(),
 		"u_time", &uTimeVar,
 		"u_mouse", &uMouseVar,
 	)
@@ -71,9 +71,9 @@ func run() {
 	intermediatecanvas := pixelgl.NewCanvas(win.Bounds())
 	intermediatecanvas.SetMatrix(modelMatrix)
 
-	wc := win.GetCanvas()
+	wc := win.Canvas()
 	wc.SetFragmentShader(fragSource)
-	wc.UpdateShader()
+
 	sqrPos := win.Bounds().Moved(pixel.V(-300, -10))
 	start := time.Now()
 	for !win.Closed() {

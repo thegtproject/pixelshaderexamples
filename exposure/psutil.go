@@ -27,7 +27,8 @@ func EasyBindUniforms(c *pixelgl.Canvas, unifs ...interface{}) {
 		panic("needs to be divisable by 2")
 	}
 	for i := 0; i < len(unifs); i += 2 {
-		c.BindUniform(unifs[i+0].(string), unifs[i+1])
+
+		c.SetUniform(unifs[i+0].(string), unifs[i+1])
 	}
 }
 

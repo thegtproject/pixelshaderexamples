@@ -57,8 +57,8 @@ func run() {
 
 	// We will update these uniforms often, so use pointer
 	EasyBindUniforms(win.Canvas(),
-		"u_time", &uTimeVar,
-		"u_amount", &uAmountVar,
+		"uTime", &uTimeVar,
+		"uAmount", &uAmountVar,
 	)
 
 	// Since we are making a post effect, we want to apply the shader

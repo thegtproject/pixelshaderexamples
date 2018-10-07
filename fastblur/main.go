@@ -52,14 +52,14 @@ func run() {
 	var uTimeVar float32
 
 	// It is common to provide a vec4 for a "mouse" uniform where
-	// u_mouse[0] = X, u_mouse[1] = Y, u_mouse[2] = left mouse button,
-	// and u_mouse[3] = right mouse button.
+	// uMouse[0] = X, uMouse[1] = Y, uMouse[2] = left mouse button,
+	// and uMouse[3] = right mouse button.
 	var uMouseVar mgl32.Vec4
 
 	// We will update these uniforms often, so use pointer
 	EasyBindUniforms(win.Canvas(),
-		"u_time", &uTimeVar,
-		"u_mouse", &uMouseVar,
+		"uTime", &uTimeVar,
+		"uMouse", &uMouseVar,
 	)
 
 	// Since we are making a post effect, we want to apply the shader

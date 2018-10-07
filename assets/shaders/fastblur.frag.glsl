@@ -2,16 +2,17 @@
 
 // base shader code from https://www.shadertoy.com/view/XssSDs
 
-in vec2 texcoords;
+in vec2 vTexCoords;
+
 out vec4 fragColor;
 
 // Pixel default uniforms
-uniform vec4 u_texbounds;
-uniform sampler2D u_texture;
+uniform vec4      uTexBounds;
+uniform sampler2D uTexture;
 
 // Our custom uniforms
-uniform float u_time;
-uniform vec4 u_mouse;
+uniform float uTime;
+uniform vec4  uMouse;
 
 vec2 Circle(float Start, float Points, float Point) 
 {
@@ -26,29 +27,29 @@ void main()
     //
     // Normalize the fragments's position, this is the location we use to sample
     // our two textures/buffers. Note: Pixel passes resolution info through
-    // u_texbounds.zw (x, y)
-	vec2 uv = gl_FragCoord.xy / u_texbounds.zw;
+    // uTexBounds.zw (x, y)
+	vec2 uv = gl_FragCoord.xy / uTexBounds.zw;
 
 
-    vec2  PixelOffset = 1.0 / u_texbounds.zw;
+    vec2  PixelOffset = 1.0 / uTexBounds.zw;
     float Start = 4.0 / 14.0;
 	vec2  Scale = 0.66 * 4.0 * 2.0 * PixelOffset.xy;
     
-    vec3 N0 = texture(u_texture, uv + Circle(Start, 14.0, 0.0) * Scale).rgb;
-    vec3 N1 = texture(u_texture, uv + Circle(Start, 14.0, 1.0) * Scale).rgb;
-    vec3 N2 = texture(u_texture, uv + Circle(Start, 14.0, 2.0) * Scale).rgb;
-    vec3 N3 = texture(u_texture, uv + Circle(Start, 14.0, 3.0) * Scale).rgb;
-    vec3 N4 = texture(u_texture, uv + Circle(Start, 14.0, 4.0) * Scale).rgb;
-    vec3 N5 = texture(u_texture, uv + Circle(Start, 14.0, 5.0) * Scale).rgb;
-    vec3 N6 = texture(u_texture, uv + Circle(Start, 14.0, 6.0) * Scale).rgb;
-    vec3 N7 = texture(u_texture, uv + Circle(Start, 14.0, 7.0) * Scale).rgb;
-    vec3 N8 = texture(u_texture, uv + Circle(Start, 14.0, 8.0) * Scale).rgb;
-    vec3 N9 = texture(u_texture, uv + Circle(Start, 14.0, 9.0) * Scale).rgb;
-    vec3 N10 = texture(u_texture, uv + Circle(Start, 14.0, 10.0) * Scale).rgb;
-    vec3 N11 = texture(u_texture, uv + Circle(Start, 14.0, 11.0) * Scale).rgb;
-    vec3 N12 = texture(u_texture, uv + Circle(Start, 14.0, 12.0) * Scale).rgb;
-    vec3 N13 = texture(u_texture, uv + Circle(Start, 14.0, 13.0) * Scale).rgb;
-    vec3 N14 = texture(u_texture, uv).rgb;
+    vec3 N0 = texture(uTexture, uv + Circle(Start, 14.0, 0.0) * Scale).rgb;
+    vec3 N1 = texture(uTexture, uv + Circle(Start, 14.0, 1.0) * Scale).rgb;
+    vec3 N2 = texture(uTexture, uv + Circle(Start, 14.0, 2.0) * Scale).rgb;
+    vec3 N3 = texture(uTexture, uv + Circle(Start, 14.0, 3.0) * Scale).rgb;
+    vec3 N4 = texture(uTexture, uv + Circle(Start, 14.0, 4.0) * Scale).rgb;
+    vec3 N5 = texture(uTexture, uv + Circle(Start, 14.0, 5.0) * Scale).rgb;
+    vec3 N6 = texture(uTexture, uv + Circle(Start, 14.0, 6.0) * Scale).rgb;
+    vec3 N7 = texture(uTexture, uv + Circle(Start, 14.0, 7.0) * Scale).rgb;
+    vec3 N8 = texture(uTexture, uv + Circle(Start, 14.0, 8.0) * Scale).rgb;
+    vec3 N9 = texture(uTexture, uv + Circle(Start, 14.0, 9.0) * Scale).rgb;
+    vec3 N10 = texture(uTexture, uv + Circle(Start, 14.0, 10.0) * Scale).rgb;
+    vec3 N11 = texture(uTexture, uv + Circle(Start, 14.0, 11.0) * Scale).rgb;
+    vec3 N12 = texture(uTexture, uv + Circle(Start, 14.0, 12.0) * Scale).rgb;
+    vec3 N13 = texture(uTexture, uv + Circle(Start, 14.0, 13.0) * Scale).rgb;
+    vec3 N14 = texture(uTexture, uv).rgb;
     
     float W = 1.0 / 15.0;
     
@@ -73,12 +74,12 @@ void main()
 
     // curTexColor is the value of the current fragment color
     // from Pixel's (the library) input texture.
-    vec4 curTexColor = texture(u_texture, uv);
+    vec4 curTexColor = texture(uTexture, uv);
     
     float xvalue = 0.0;
 
     // Left mouse button is currently pressed
-    if (u_mouse[2] == 1.0) xvalue = u_mouse[0] / u_texbounds.z;
+    if (uMouse[2] == 1.0) xvalue = uMouse[0] / uTexBounds.z;
 
     if(uv.x < xvalue)
     {

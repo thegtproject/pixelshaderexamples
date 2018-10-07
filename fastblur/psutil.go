@@ -18,8 +18,8 @@ import (
 //   var uMouseVar mgl32.Vec4
 //
 //   EasyBindUniforms(win.GetCanvas(),
-// 	     "u_time", &uTimeVar,
-// 	     "u_mouse", &uMouseVar,
+// 	     "uTime", &uTimeVar,
+// 	     "uMouse", &uMouseVar,
 //   )
 //
 func EasyBindUniforms(c *pixelgl.Canvas, unifs ...interface{}) {
